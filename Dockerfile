@@ -5,6 +5,7 @@ ARG TEXLIVE_VERSION=2022
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NOWARNINGS=yes
 ENV PATH="/usr/local/texlive/bin:$PATH"
+ENV LC_ALL=C
 
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
