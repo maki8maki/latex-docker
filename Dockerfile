@@ -63,7 +63,10 @@ RUN tlmgr option repository https://mirror.ctan.org/systems/texlive/tlnet && \
     latexmk \
     latexdiff \
     siunitx \
-    latexindent && \
+    latexindent \
+    kastrup \
+    tex-gyre \
+    newtx && \
     wget https://raw.githubusercontent.com/being24/plistings/master/plistings.sty && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
     chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/plistings.sty && \
