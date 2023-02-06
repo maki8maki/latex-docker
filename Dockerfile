@@ -7,7 +7,6 @@ ENV DEBCONF_NOWARNINGS=yes
 ENV PATH="/usr/local/texlive/bin:$PATH"
 ENV LC_ALL=C
 
-
 RUN apt-get update && \
     apt-get install -y --no-install-recommends \
     curl \
@@ -47,7 +46,7 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN tlmgr option repository https://mirror.ctan.org/systems/texlive/tlnet && \
+RUN tlmgr option repository ctan && \
     tlmgr update --self && \
     tlmgr install \
     collection-bibtexextra \
@@ -63,10 +62,7 @@ RUN tlmgr option repository https://mirror.ctan.org/systems/texlive/tlnet && \
     latexmk \
     latexdiff \
     siunitx \
-    latexindent \
-    kastrup \
-    tex-gyre \
-    newtx && \
+    latexindent && \
     wget https://raw.githubusercontent.com/being24/plistings/master/plistings.sty && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
     chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/plistings.sty && \
