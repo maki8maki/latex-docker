@@ -47,7 +47,6 @@ jobs:
           file: ./Dockerfile
           platforms: linux/${{ matrix.arch }}
           push: ${{ github.event_name != 'pull_request' }}
-          provenance: false
           tags: |
             ghcr.io/being24/latex-docker:latest-${{ matrix.arch }}
             ghcr.io/being24/latex-docker:${{ env.VERSION }}-${{ matrix.arch }}
