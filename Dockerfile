@@ -62,6 +62,7 @@ RUN tlmgr option repository ctan && \
     latexmk \
     latexdiff \
     siunitx \
+    newtx \
     latexindent && \
     wget https://raw.githubusercontent.com/being24/plistings/master/plistings.sty && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
