@@ -1,6 +1,6 @@
 FROM ubuntu:20.04
 
-ARG TEXLIVE_VERSION=2022
+ARG TEXLIVE_VERSION=2023
 
 ENV DEBIAN_FRONTEND=noninteractive
 ENV DEBCONF_NOWARNINGS=yes
@@ -39,7 +39,7 @@ RUN apt-get update && \
     echo 'y' | cpan YAML/Tiny.pm Log::Dispatch::File File::HomeDir Unicode::GCString && \
     pip3 install --no-cache-dir pygments && \
     mkdir /tmp/install-tl-unx && \
-    wget -O - ftp://tug.org/historic/systems/texlive/${TEXLIVE_VERSION}/install-tl-unx.tar.gz \
+    wget -O - https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/install-tl-unx.tar.gz \
         | tar -xzv -C /tmp/install-tl-unx --strip-components=1 && \
     /bin/echo -e 'selected_scheme scheme-basic\ntlpdbopt_install_docfiles 0\ntlpdbopt_install_srcfiles 0' \
         > /tmp/install-tl-unx/texlive.profile && \
@@ -53,7 +53,8 @@ RUN apt-get update && \
     apt-get autoremove -y && \
     rm -rf /var/lib/apt/lists/*
 
-RUN tlmgr option repository ctan && \
+# RUN tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet && \
+RUN tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
     tlmgr update --self && \
     tlmgr install \
         collection-bibtexextra \
