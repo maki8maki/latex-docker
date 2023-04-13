@@ -72,4 +72,4 @@ $dvipdf = 'dvipdfmx -V 4 %O -o %D %S';
 に変更することでバージョンを指定することができます。
 
 ## フォント
-英語系のフォントはTeX Gyre Herosを、日本語系のフォントはHarano Ajiを使用しています。
+英語系のフォントはTeX Gyre Termesを、日本語系のフォントはHarano Ajiを使用しています。
