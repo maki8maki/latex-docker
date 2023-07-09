@@ -21,7 +21,10 @@ RUN apt-get update && \
         less \
         poppler-utils \
         ttf-mscorefonts-installer \
-        software-properties-common  && \
+        software-properties-common && \
+    curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
+    apt-get install -y --no-install-recommends \
+        nodejs && \
     add-apt-repository -y ppa:inkscape.dev/stable && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
@@ -52,6 +55,7 @@ RUN apt-get update && \
         build-essential && \
     apt-get clean && \
     apt-get autoremove -y && \
+    apt-get autoclean -y && \
     rm -rf /var/lib/apt/lists/*
 
 # RUN tlmgr option repository ctan && \
