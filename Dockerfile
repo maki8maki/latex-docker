@@ -18,6 +18,7 @@ RUN apt-get update && \
         ghostscript \
         perl \
         git \
+        less \
         poppler-utils \
         ttf-mscorefonts-installer \
         software-properties-common  && \
