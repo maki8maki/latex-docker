@@ -19,9 +19,15 @@ RUN apt-get update && \
         perl \
         git \
         less \
+        unzip \
         poppler-utils \
         ttf-mscorefonts-installer \
-        software-properties-common && \
+        software-properties-common \
+        fonts-ipafont \
+        fonts-ipaexfont \
+        fonts-noto-cjk \
+        fonts-noto-cjk-extra \
+        fonts-texgyre && \
     curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
     apt-get install -y --no-install-recommends \
         nodejs && \
@@ -29,6 +35,10 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         inkscape && \
+    curl -OL https://github.com/trueroad/HaranoAjiFonts/archive/refs/tags/20230610.zip && \
+    unzip 20230610.zip && \
+    mv HaranoAjiFonts-20230610 /usr/share/fonts/ && \
+    fc-cache -fv && \
     apt-get remove -y --purge \
         software-properties-common && \
     apt-get clean && \
