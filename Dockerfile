@@ -70,8 +70,8 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # RUN tlmgr option repository ctan && \
-# RUN tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
-    RUN tlmgr update --self && \
+    RUN tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
+        tlmgr update --self && \
         tlmgr install \
             collection-bibtexextra \
             collection-fontsrecommended \
