@@ -45,7 +45,7 @@ runs:
             ${IMAGE}-amd64-2022 \
             ${IMAGE}-arm64-2022
         docker manifest push ${IMAGE}-2022
-        docker manifest create ${{ inputs.image }}:latest-2022 \
-            ${{ inputs.image }}:latest-amd64-2022 \
-            ${{ inputs.image }}:latest-arm64-2022
-        docker manifest push ${{ inputs.image }}:latest-2022
+        docker manifest create ${{ inputs.image }}:2022 \
+            ${{ inputs.image }}:2022-amd64 \
+            ${{ inputs.image }}:2022-arm64
+        docker manifest push ${{ inputs.image }}:2022
