@@ -59,8 +59,8 @@ RUN apt-get update && \
     /bin/echo -e 'selected_scheme scheme-basic\ntlpdbopt_install_docfiles 0\ntlpdbopt_install_srcfiles 0' \
         > /tmp/install-tl-unx/texlive.profile && \
     /tmp/install-tl-unx/install-tl \
-        --profile /tmp/install-tl-unx/texlive.profile \
-        --repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
+        --profile /tmp/install-tl-unx/texlive.profile && \
+        # --repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
     rm -r /tmp/install-tl-unx && \
     ln -sf /usr/local/texlive/${TEXLIVE_VERSION}/bin/$(uname -m)-linux /usr/local/texlive/bin && \
     apt-get remove -y --purge \
@@ -70,9 +70,9 @@ RUN apt-get update && \
     apt-get autoclean -y && \
     rm -rf /var/lib/apt/lists/*
 
-    RUN tlmgr option repository http://mirror.ctan.org/systems/texlive/tlnet && \
-    # RUN tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
-        tlmgr update --self && \
+# RUN tlmgr option repository ctan && \
+# RUN tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
+    RUN tlmgr update --self && \
         tlmgr install \
             collection-bibtexextra \
             collection-fontsrecommended \
