@@ -36,3 +36,16 @@ runs:
             ${{ inputs.image }}:latest-amd64 \
             ${{ inputs.image }}:latest-arm64
         docker manifest push ${{ inputs.image }}:latest
+
+    - name: Create multi-arch image manifest with tag "2022"
+      shell: bash
+      run: |
+        IMAGE=${{ inputs.image }}:${{ inputs.image-version }}
+        docker manifest create ${IMAGE}-2022 \
+            ${IMAGE}-amd64-2022 \
+            ${IMAGE}-arm64-2022
+        docker manifest push ${IMAGE}-2022
+        docker manifest create ${{ inputs.image }}:latest-2022 \
+            ${{ inputs.image }}:latest-amd64-2022 \
+            ${{ inputs.image }}:latest-arm64-2022
+        docker manifest push ${{ inputs.image }}:latest-2022
