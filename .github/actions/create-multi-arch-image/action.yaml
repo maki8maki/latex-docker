@@ -24,18 +24,18 @@ runs:
         registry: ${{ inputs.registry }}
         username: ${{ inputs.username }}
         password: ${{ inputs.password }}
-    - name: Create multi-arch image manifest
-      shell: bash
-      run: |
-        IMAGE=${{ inputs.image }}:${{ inputs.image-version }}
-        docker manifest create ${IMAGE} \
-            ${IMAGE}-amd64 \
-            ${IMAGE}-arm64
-        docker manifest push ${IMAGE}
-        docker manifest create ${{ inputs.image }}:latest \
-            ${{ inputs.image }}:latest-amd64 \
-            ${{ inputs.image }}:latest-arm64
-        docker manifest push ${{ inputs.image }}:latest
+    # - name: Create multi-arch image manifest
+    #   shell: bash
+    #   run: |
+    #     IMAGE=${{ inputs.image }}:${{ inputs.image-version }}
+    #     docker manifest create ${IMAGE} \
+    #         ${IMAGE}-amd64 \
+    #         ${IMAGE}-arm64
+    #     docker manifest push ${IMAGE}
+    #     docker manifest create ${{ inputs.image }}:latest \
+    #         ${{ inputs.image }}:latest-amd64 \
+    #         ${{ inputs.image }}:latest-arm64
+    #     docker manifest push ${{ inputs.image }}:latest
 
     - name: Create multi-arch image manifest with tag "2022"
       shell: bash
