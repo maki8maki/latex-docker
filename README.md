@@ -1,7 +1,13 @@
 # Docker image for LaTeX
+TeXLiveに様々な機能を追加したDocker imageです。
 
 ## Usage
 
+[こちらのテンプレートリポジトリ](https://github.com/being24/latex-template-ja)と組み合わせて使用することを想定しています。
+詳細は[こちら](https://zenn.dev/being/articles/how-to-use-my-latex)を参照してください。
+ですが、それ以外の環境でも使用可能です。
+
+コマンドラインからの場合、以下のように使用することができます。
 カレントディレクトリにビルドしたいtexソースがあるとします．
 
 ```bash
@@ -12,10 +18,12 @@ docker run -u $(id -u):$(id -g) --rm -v $PWD:/workdir ghcr.io/being24/latex-dock
 
 ## Version
 
-| Image tag | Ubuntu | TeXLive | Arch         | Registry            |
-| --------- | ------ | ------- | -----------  | ------------------  |
-| 3.0.3     | 20.04  | 2022    | amd64, arm64 | ghcr.io             |
-| 3.1.0     | 20.04  | 2022    | amd64, arm64 | docker.io, ghcr.io  |
+| Image tag | Ubuntu | TeXLive      | Arch         | Registry            |
+| --------- | ------ | -------      | -----------  | ------------------  |
+| 3.0.3     | 20.04  | 2022         | amd64, arm64 | ghcr.io             |
+| 3.1.0     | 20.04  | 2022         | amd64, arm64 | docker.io, ghcr.io  |
+| 3.2.6     | 20.04  | 2022(frozen) | amd64, arm64 | docker.io, ghcr.io  |
+| 3.2.8     | 20.04  | 2023         | amd64, arm64 | docker.io, ghcr.io  |
 
 ## Author
 
@@ -45,6 +53,8 @@ docker pull ghcr.io/being24/latex-docker:latest
 ## Embedding font
 
 一部の論文誌等ではフォントの埋め込みを提出の要件にしています。
+現在は基本的にTeXLiveの標準フォントが埋め込まれるため必要ありませんが、念のため残しておきます。
+
 そういった場合以下のコマンドをコンテナ内で使用することでフォントの埋め込みが可能です。
 
 ```bash
