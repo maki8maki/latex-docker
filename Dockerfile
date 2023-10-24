@@ -50,6 +50,7 @@ RUN apt-get update && \
     unzip 20230610.zip && \
     mv HaranoAjiFonts-20230610 /usr/share/fonts/ && \
     fc-cache -fv && \
+    rm 20230610.zip && \
     apt-get remove -y --purge \
         software-properties-common && \
     apt-get clean && \
@@ -104,7 +105,11 @@ RUN apt-get update && \
     wget https://raw.githubusercontent.com/being24/plistings/master/plistings.sty && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
     chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/plistings.sty && \
-    mktexlsr
+    mktexlsr && \
+    curl -L -O https://raw.githubusercontent.com/being24/latex-docker/master/create_font_cache.sh && \
+    chmod +x create_font_cache.sh && \
+    ./create_font_cache.sh && \
+    rm create_font_cache.sh
 
 WORKDIR /workdir
 
