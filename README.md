@@ -18,12 +18,15 @@ docker run -u $(id -u):$(id -g) --rm -v $PWD:/workdir ghcr.io/being24/latex-dock
 
 ## Version
 
+Version4.0.0以降は、メジャーバージョンはUbuntuのLTSを更新した際に更新します。
+
 | Image tag | Ubuntu | TeXLive      | Arch         | Registry            |
 | --------- | ------ | -------      | -----------  | ------------------  |
 | 3.0.3     | 20.04  | 2022         | amd64, arm64 | ghcr.io             |
 | 3.1.0     | 20.04  | 2022         | amd64, arm64 | docker.io, ghcr.io  |
 | 3.2.6     | 20.04  | 2022(frozen) | amd64, arm64 | docker.io, ghcr.io  |
 | 3.2.8     | 20.04  | 2023         | amd64, arm64 | docker.io, ghcr.io  |
+| 3.2.9     | 20.04  | 2023(frozen) | amd64, arm64 | docker.io, ghcr.io  |
 
 ## Author
 

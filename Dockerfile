@@ -30,9 +30,6 @@ RUN apt-get update && \
         fonts-noto-cjk \
         fonts-noto-cjk-extra \
         fonts-texgyre && \
-    # curl -fsSL https://deb.nodesource.com/setup_16.x | bash - && \
-    # apt-get install -y --no-install-recommends \
-    #     nodejs && \
     mkdir -p /etc/apt/keyrings && \
     curl -fsSL https://deb.nodesource.com/gpgkey/nodesource-repo.gpg.key \
         | gpg --dearmor -o /etc/apt/keyrings/nodesource.gpg && \
@@ -46,11 +43,11 @@ RUN apt-get update && \
     apt-get update && \
     apt-get install -y --no-install-recommends \
         inkscape && \
-    curl -OL https://github.com/trueroad/HaranoAjiFonts/archive/refs/tags/20230610.zip && \
-    unzip 20230610.zip && \
-    mv HaranoAjiFonts-20230610 /usr/share/fonts/ && \
+    curl -OL https://github.com/trueroad/HaranoAjiFonts/archive/refs/tags/20231009.zip && \
+    unzip 20231009.zip && \
+    mv HaranoAjiFonts-20231009 /usr/share/fonts/ && \
     fc-cache -fv && \
-    rm 20230610.zip && \
+    rm 20231009.zip && \
     apt-get remove -y --purge \
         software-properties-common && \
     apt-get clean && \
@@ -65,14 +62,14 @@ RUN apt-get update && \
     echo 'y' | cpan YAML/Tiny.pm Log::Dispatch::File File::HomeDir Unicode::GCString && \
     pip3 install --no-cache-dir pygments && \
     mkdir /tmp/install-tl-unx && \
-    # wget -O - https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/install-tl-unx.tar.gz \
-    wget -O - https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/install-tl-unx.tar.gz \
+    wget -O - https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/install-tl-unx.tar.gz \
+    # wget -O - https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/install-tl-unx.tar.gz \
         | tar -xzv -C /tmp/install-tl-unx --strip-components=1 && \
     /bin/echo -e 'selected_scheme scheme-basic\ntlpdbopt_install_docfiles 0\ntlpdbopt_install_srcfiles 0' \
         > /tmp/install-tl-unx/texlive.profile && \
-    /tmp/install-tl-unx/install-tl \
-        --profile /tmp/install-tl-unx/texlive.profile && \
-        # --repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
+    echo 'I' | /tmp/install-tl-unx/install-tl \
+        -repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ \
+        -profile texlive.profile && \
     rm -r /tmp/install-tl-unx && \
     ln -sf /usr/local/texlive/${TEXLIVE_VERSION}/bin/$(uname -m)-linux /usr/local/texlive/bin && \
     apt-get remove -y --purge \
