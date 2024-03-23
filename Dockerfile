@@ -80,25 +80,25 @@ RUN apt-get update && \
     rm -rf /var/lib/apt/lists/*
 
 # RUN tlmgr option repository ctan && \
-# RUN tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
-    RUN tlmgr update --self && \
-        tlmgr install \
-            collection-bibtexextra \
-            collection-fontsrecommended \
-            collection-langenglish \
-            collection-langjapanese \
-            collection-latexextra \
-            collection-latexrecommended \
-            collection-luatex \
-            collection-mathscience \
-            collection-plaingeneric \
-            collection-xetex \
-            latexmk \
-            latexdiff \
-            siunitx \
-            newtx \
-            svg \
-            latexindent && \
+RUN tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/ && \
+RUN tlmgr update --self && \
+    tlmgr install \
+        collection-bibtexextra \
+        collection-fontsrecommended \
+        collection-langenglish \
+        collection-langjapanese \
+        collection-latexextra \
+        collection-latexrecommended \
+        collection-luatex \
+        collection-mathscience \
+        collection-plaingeneric \
+        collection-xetex \
+        latexmk \
+        latexdiff \
+        siunitx \
+        newtx \
+        svg \
+        latexindent && \
     wget https://raw.githubusercontent.com/being24/plistings/master/plistings.sty && \
     mv plistings.sty /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing && \
     chmod +r /usr/local/texlive/${TEXLIVE_VERSION}/texmf-dist/tex/latex/listing/plistings.sty && \
