@@ -58,9 +58,9 @@ jobs:
           provenance: false
           tags: |
             ghcr.io/being24/latex-docker:latest-${{ matrix.arch }}
-            ghcr.io/being24/latex-docker:${{ env.VERSION }}-${{ matrix.arch }}
+            ghcr.io/being24/latex-docker:${{ env.IMAGE_VERSION }}-${{ matrix.arch }}
             ${{ secrets.DOCKERHUB_USERNAME }}/latex-docker:latest-${{ matrix.arch }}
-            ${{ secrets.DOCKERHUB_USERNAME }}/latex-docker:${{ env.VERSION }}-${{ matrix.arch }}
+            ${{ secrets.DOCKERHUB_USERNAME }}/latex-docker:${{ env.IMAGE_VERSION }}-${{ matrix.arch }}
 
   manifest:
     runs-on: ubuntu-22.04
