@@ -85,18 +85,17 @@ jobs:
           registry: ghcr.io
           username: ${{ github.repository_owner }}
           password: ${{ secrets.GITHUB_TOKEN }}
-      - uses: ./.github/actions/create-multi-arch-image
-        with:
-          registry: ghcr.io
-          username: ${{ github.repository_owner }}
-          password: ${{ secrets.GITHUB_TOKEN }}
-          image: ghcr.io/being24/latex-docker
-          image-version: ${{ env.IMAGE_VERSION }}
-      - name: Create and push manifest images
+      - name: Create and push manifest images to ghcr.io
         uses: Noelware/docker-manifest-action@0.4.1
         with:
           inputs: ghcr.io/being24/latex-docker:latest,ghcr.io/being24/latex-docker:${{ env.IMAGE_VERSION }},ghcr.io/being24/latex-docker:2023-frozen
           images: ghcr.io/being24/latex-docker:latest-amd64,ghcr.io/being24/latex-docker:latest-arm64
+          push: true
+      - name: Create and push manifest images to docker.io
+        uses: Noelware/docker-manifest-action@0.4.1
+        with:
+          inputs: ${{ secrets.DOCKERHUB_USERNAME }}/latex-docker:latest,${{ secrets.DOCKERHUB_USERNAME }}/latex-docker:${{ env.IMAGE_VERSION }},${{ secrets.DOCKERHUB_USERNAME }}/latex-docker:2023-frozen
+          images: ${{ secrets.DOCKERHUB_USERNAME }}/latex-docker:latest-amd64,${{ secrets.DOCKERHUB_USERNAME }}/latex-docker:latest-arm64
           push: true
       - name: Create GitHub Releases
         env:
