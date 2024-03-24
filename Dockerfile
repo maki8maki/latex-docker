@@ -45,7 +45,7 @@ RUN tlmgr update --self --all && \
     mktexlsr && \
     curl -L -O https://raw.githubusercontent.com/being24/latex-docker/master/create_font_cache.sh && \
     chmod +x create_font_cache.sh && \
-    # ./create_font_cache.sh && \
+    ./create_font_cache.sh && \
     rm create_font_cache.sh
 
 WORKDIR /workdir
