@@ -49,6 +49,3 @@ RUN tlmgr update --self && \
     rm create_font_cache.sh
 
 WORKDIR /workdir
-
-COPY .latexmkrc /
-COPY .latexmkrc /root/
