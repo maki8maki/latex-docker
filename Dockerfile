@@ -21,7 +21,7 @@ RUN mkdir /tmp/install-tl-unx && \
 
 RUN tlmgr option repository https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/tlnet-final/
 
-RUN tlmgr update --self && \
+RUN tlmgr update --self --all && \
     tlmgr install \
         collection-bibtexextra \
         collection-fontsrecommended \
@@ -45,7 +45,7 @@ RUN tlmgr update --self && \
     mktexlsr && \
     curl -L -O https://raw.githubusercontent.com/being24/latex-docker/master/create_font_cache.sh && \
     chmod +x create_font_cache.sh && \
-    ./create_font_cache.sh && \
+    # ./create_font_cache.sh && \
     rm create_font_cache.sh
 
 WORKDIR /workdir

@@ -26,7 +26,7 @@ Version4.0.0以降は、メジャーバージョンはUbuntuのLTSを更新し�
 | 3.1.0     | 20.04  | 2022         | amd64, arm64 | docker.io, ghcr.io  |
 | 3.2.6     | 20.04  | 2022(frozen) | amd64, arm64 | docker.io, ghcr.io  |
 | 3.2.8     | 20.04  | 2023         | amd64, arm64 | docker.io, ghcr.io  |
-| 3.2.9     | 20.04  | 2023(frozen) | amd64, arm64 | docker.io, ghcr.io  |
+| 3.2.9     | 22.04  | 2023         | amd64, arm64 | ghcr.io             |
 
 ## Author
 
