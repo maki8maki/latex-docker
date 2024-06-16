@@ -8,7 +8,7 @@ ENV PATH="/usr/local/texlive/bin:$PATH"
 ENV LC_ALL=C
 
 RUN mkdir /tmp/install-tl-unx && \
-    curl -L https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/install-tl-unx.tar.gz \
+    curl -k -L https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/install-tl-unx.tar.gz \
     | tar -xzv -C /tmp/install-tl-unx --strip-components=1 && \
     /bin/echo -e 'selected_scheme scheme-basic\ntlpdbopt_install_docfiles 0\ntlpdbopt_install_srcfiles 0' \
     > /tmp/install-tl-unx/texlive.profile && \
