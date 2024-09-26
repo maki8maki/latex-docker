@@ -74,3 +74,9 @@ $dvipdf = 'dvipdfmx -V 4 %O -o %D %S';
 
 ## フォント
 英語系のフォントはTeX Gyre Termesを、日本語系のフォントはHarano Ajiを使用しています。
+
+## debug用のコンテナを起動する
+
+```bash
+docker run -it --rm --user root ghcr.io/being24/latex-docker:latest /bin/bash
+```
