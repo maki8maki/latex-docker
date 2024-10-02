@@ -44,6 +44,10 @@ RUN tlmgr update --self --all && \
     chmod +x create_font_cache.sh && \
     ./create_font_cache.sh && \
     rm create_font_cache.sh && \
+    curl -L -o tex-fmt.tar.gz https://github.com/WGUNDERWOOD/tex-fmt/releases/latest/download/tex-fmt-$(uname -m)-linux.tar.gz && \
+    tar -xzvf tex-fmt.tar.gz && \
+    mv tex-fmt /usr/local/bin && \
+    rm tex-fmt.tar.gz && \
     useradd -m -u 1000 -s /bin/bash latex
 
 USER latex
