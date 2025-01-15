@@ -8,11 +8,12 @@ ENV PATH="/usr/local/texlive/bin:$PATH"
 ENV LC_ALL=C
 
 RUN mkdir /tmp/install-tl-unx && \
-    curl -L https://ftp.math.utah.edu/pub/tex/historic/systems/texlive/${TEXLIVE_VERSION}/install-tl-unx.tar.gz \
+    curl -L https://ftp.jaist.ac.jp/pub/CTAN/systems/texlive/tlnet/install-tl-unx.tar.gz \
     | tar -xzv -C /tmp/install-tl-unx --strip-components=1 && \
     /bin/echo -e 'selected_scheme scheme-basic\ntlpdbopt_install_docfiles 0\ntlpdbopt_install_srcfiles 0' \
     > /tmp/install-tl-unx/texlive.profile && \
     /tmp/install-tl-unx/install-tl \
+    --repository http://mirror.ctan.org/systems/texlive/tlnet/ \
     -profile /tmp/install-tl-unx/texlive.profile && \
     rm -r /tmp/install-tl-unx && \
     ln -sf /usr/local/texlive/${TEXLIVE_VERSION}/bin/$(uname -m)-linux /usr/local/texlive/bin
@@ -43,6 +44,10 @@ RUN tlmgr update --self --all && \
     chmod +x create_font_cache.sh && \
     ./create_font_cache.sh && \
     rm create_font_cache.sh && \
+    curl -L -o tex-fmt.tar.gz https://github.com/WGUNDERWOOD/tex-fmt/releases/latest/download/tex-fmt-$(uname -m)-linux.tar.gz && \
+    tar -xzvf tex-fmt.tar.gz && \
+    mv tex-fmt /usr/local/bin && \
+    rm tex-fmt.tar.gz && \
     useradd -m -u 1000 -s /bin/bash latex
 
 USER latex
